@@ -129,7 +129,7 @@ public class PlannerInterface {
 		while(!selected){
 			try{
 				String id =inputOutput("\nEnter the desired room ID, or cancel to cancel: ");
-				if(id.equals("cancel")){
+				if("cancel".equals(id)){
 					this.mainMenu();
 				}else{
 					where = org.getRoom(id);
@@ -228,7 +228,7 @@ public class PlannerInterface {
 				// Start month
 				for(int day=sDay; day<=31;day++){
 					if(who.isBusy(sMonth,day,0,23)){
-						if(!who.getMeeting(sMonth,day,0).getDescription().equals("Day does not exist")){
+						if(!"Day does not exist".equals(who.getMeeting(sMonth,day,0).getDescription())){
 							System.out.println("There is a conflict for date "+sMonth+"/"+day+":\n"+who.printAgenda(sMonth, day));
 							conflict=true;
 						}
@@ -238,7 +238,7 @@ public class PlannerInterface {
 				for(int month=sMonth+1; month<eMonth;month++){
 					for(int day=1; day<=31;day++){
 						if(who.isBusy(month,day,0,23)){
-							if(!who.getMeeting(month,day,0).getDescription().equals("Day does not exist")){
+							if(!"Day does not exist".equals(who.getMeeting(month,day,0).getDescription())){
 								System.out.println("There is a conflict for date "+month+"/"+day+":\n"+who.printAgenda(month, day));
 								conflict=true;
 							}
@@ -248,7 +248,7 @@ public class PlannerInterface {
 				// End month
 				for(int day=1;day<=eDay;day++){
 					if(who.isBusy(eMonth,day,0,23)){
-						if(!who.getMeeting(eMonth,day,0).getDescription().equals("Day does not exist")){
+						if(!"Day does not exist".equals(who.getMeeting(eMonth,day,0).getDescription())){
 							System.out.println("There is a conflict for date "+eMonth+"/"+day+":\n"+who.printAgenda(eMonth, day));
 							conflict=true;
 						}
@@ -257,7 +257,7 @@ public class PlannerInterface {
 			}else{
 				for(int day=sDay; day<=eDay;day++){
 					if(who.isBusy(sMonth,day,0,23)){
-						if(!who.getMeeting(sMonth,day,0).getDescription().equals("Day does not exist")){
+						if(!"Day does not exist".equals(who.getMeeting(sMonth,day,0).getDescription())){
 							System.out.println("There is a conflict for date "+sMonth+"/"+day+":\n"+who.printAgenda(sMonth, day));
 							conflict=true;
 						}
@@ -412,7 +412,7 @@ public class PlannerInterface {
 		if(!name.equals("cancel")){
 			try{
 				Room who = org.getRoom(name);
-				if(!day.equals("all")){
+				if(!"all".equals(day)){
 					System.out.println(who.printAgenda(month, Integer.parseInt(day)));
 				}else{
 					System.out.println(who.printAgenda(month));
@@ -447,7 +447,7 @@ public class PlannerInterface {
 		if(!name.equals("cancel")){
 			try{
 				Person who = org.getEmployee(name);
-				if(!day.equals("all")){
+				if(!"all".equals(day)){
 					System.out.println(who.printAgenda(month, Integer.parseInt(day)));
 				}else{
 					System.out.println(who.printAgenda(month));
