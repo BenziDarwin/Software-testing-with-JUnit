@@ -1,5 +1,6 @@
 package edu.sc.bse3211.meetingplanner;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -83,7 +84,7 @@ public class PlannerInterface {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		String returnString = "";
 		try {
-			returnString = br.readLine();
+			returnString = BoundedLineReader.readLine(br, 5_000_000);
 		}
 		catch (IOException e){
 			System.out.println("Error reading in value");
